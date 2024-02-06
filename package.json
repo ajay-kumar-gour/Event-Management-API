@@ -1,0 +1,30 @@
+{
+  "name": "event-management-api",
+  "version": "1.0.0",
+  "description": "API for managing Events",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon ./src/app.js",
+    "start":" node ./src/app.js"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "MongoDB",
+    "JWT",
+    "Bcrypt",
+    "API",
+    "Backend"
+  ],
+  "author": "ajay-kumar-gour",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

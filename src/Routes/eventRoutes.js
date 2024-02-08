@@ -1,18 +1,22 @@
 const express = require("express");
-
 const router = express.Router();
 
-//create an event
-//see all list events
+const eventController = require("../Controllers/eventController");
 
-router.get("/", (req, res) => {
-  res.status(200).send({
-    success: true,
-    message: "list of all events",
-  });
-});
+//create an event
+router.post(("/", eventController.createEvent));
+
+//see all list events
+router.get("/", eventController.getAllEvents);
+
 //see a particular event by eventID
+
+router.get("/:eventID", eventController.getEventById);
 //update an existing event
+
+router.put("/:eventID", eventController.updateEventById);
 //delete an event
+
+router.delete("/:eventID", eventController.deleteEventById);
 
 module.exports = router;

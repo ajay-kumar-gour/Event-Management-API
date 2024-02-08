@@ -63,6 +63,7 @@ const eventSchema = new mongoose.Schema(
     },
     price: {
       type: mongoose.Schema.Types.Mixed,
+      required: true,
       validate: {
         validator: function (value) {
           return typeof value == "number" || value == "Free";

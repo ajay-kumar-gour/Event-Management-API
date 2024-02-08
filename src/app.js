@@ -5,7 +5,7 @@ const connectToDB = require("./Database/DB-Connect");
 const app = express();
 const PORT = process.env.PORT;
 console.log(PORT);
-
+app.use(express.json());
 const eventRouter = require("./Routes/eventRoutes");
 
 app.use("/events", eventRouter);

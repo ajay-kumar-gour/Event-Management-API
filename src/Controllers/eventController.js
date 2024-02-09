@@ -35,7 +35,21 @@ const createEvent = async (req, res) => {
 };
 
 const getAllEvents = async (req, res) => {
-
- 
+  try {
+    const eventsData = await Event.find();
+    res.status(200).send({
+      success: true,
+      message: "All Events fetched",
+      totalEvents: eventsData.length,
+      eventsData,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
 };
 module.exports = { createEvent, getAllEvents };

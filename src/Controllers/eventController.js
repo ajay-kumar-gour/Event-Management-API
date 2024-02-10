@@ -9,22 +9,31 @@ const createEvent = async (req, res) => {
       });
     }
     console.log(data);
+    if (Array.isArray(data)) {
+      const savedEvents = await Event.insertMany(data);
+      res.status(201).send({
+        succes: true,
+        message: "Events Created",
+        numberofEventCreated: savedEvents.length,
+        data: savedEvents,
+      });
+    } else {
+      const newEvent = new Event(data);
 
-    const newEvent = new Event(data);
-
-    const createdEvent = await newEvent.save();
+      const createdEvent = await newEvent.save();
+      res.status(201).send({
+        success: true,
+        message: "Event Created",
+        numberofEventCreated: 1,
+        data: createdEvent,
+      });
+    }
 
     // res.status(200).send({
     //   message: eventData,
     //   type: typeof eventData,
     //   length: Object.keys(eventData).length,
     // });
-
-    res.status(201).send({
-      success: true,
-      message: "Event Created",
-      data: createdEvent,
-    });
   } catch (error) {
     res.status(500).send({
       success: false,

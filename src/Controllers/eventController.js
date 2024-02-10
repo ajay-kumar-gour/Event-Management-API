@@ -1,5 +1,5 @@
 const Event = require("../Models/eventModels");
-
+const mongoose = require("mongoose");
 const createEvent = async (req, res) => {
   try {
     const data = req.body;
@@ -52,4 +52,38 @@ const getAllEvents = async (req, res) => {
     });
   }
 };
-module.exports = { createEvent, getAllEvents };
+
+const getEventById = async (req, res) => {
+  try {
+    const eventId = req.params.eventID;
+    console.log(eventId);
+    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      return res.status(400).send({
+        success: false,
+        message: "Provided Event ID is Invalid",
+      });
+    }
+    const eventData = await Event.findById(eventId);
+
+    if (!eventData) {
+      return res.status(404).send({
+        success: false,
+        message: "Event does not exist with provided Event ID",
+      });
+    }
+
+    res.status(200).send({
+      success: true,
+      message: "Event with provided event ID is fetched",
+      event: eventData,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+module.exports = { createEvent, getAllEvents, getEventById };

@@ -167,10 +167,36 @@ const deleteEventById = async (req, res) => {
     });
   }
 };
+
+const deleteAllEvents = async (req, res) => {
+  try {
+    const checkExistingData = await Event.find();
+    if (checkExistingData.length == 0) {
+      return res.status(404).send({
+        success: false,
+        message: "No Events found to delete",
+      });
+    }
+    const deletedData = await Event.deleteMany();
+    console.log(deletedData);
+
+    res.status(204).send({
+      success: true,
+      message: "All Events deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.messsage,
+    });
+  }
+};
 module.exports = {
   createEvent,
   getAllEvents,
   getEventById,
   updateEventById,
   deleteEventById,
+  deleteAllEvents,
 };

@@ -55,7 +55,7 @@ const getAllEvents = async (req, res) => {
 
 const getEventById = async (req, res) => {
   try {
-    const eventId = req.params.eventID;
+    const eventId = req.params.eventId;
     console.log(eventId);
     if (!mongoose.Types.ObjectId.isValid(eventId)) {
       return res.status(400).send({
@@ -86,4 +86,49 @@ const getEventById = async (req, res) => {
     });
   }
 };
-module.exports = { createEvent, getAllEvents, getEventById };
+
+const updateEventById = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+    console.log(eventId);
+
+    const toBeUpdated = req.body;
+    console.log(toBeUpdated);
+
+    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      return res.status(400).send({
+        success: false,
+        message: "Provided Event ID is Invalid",
+      });
+    }
+    const existingEventData = await Event.findById(eventId);
+    if (!existingEventData) {
+      return res.status(404).send({
+        success: false,
+        message: "Event does not exist with provided Event ID",
+      });
+    }
+
+    const updatedEventData = await Event.findByIdAndUpdate(
+      eventId,
+      toBeUpdated,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    res.status(200).send({
+      success: true,
+      message: "Event Updated",
+      updatedEvent: updatedEventData,
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      messsage: "Internal Server Error",
+      error,
+    });
+  }
+};
+module.exports = { createEvent, getAllEvents, getEventById, updateEventById };

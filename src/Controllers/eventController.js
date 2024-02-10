@@ -127,8 +127,50 @@ const updateEventById = async (req, res) => {
     res.status(500).send({
       success: false,
       messsage: "Internal Server Error",
-      error,
+      error: error.message,
     });
   }
 };
-module.exports = { createEvent, getAllEvents, getEventById, updateEventById };
+
+const deleteEventById = async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+
+    console.log(eventId);
+
+    if (!mongoose.Types.ObjectId.isValid(eventId)) {
+      return res.status(400).send({
+        success: false,
+        messsage: "Provided Event ID is Invalid",
+      });
+    }
+
+    const existingEventData = await Event.findById(eventId);
+    if (!existingEventData) {
+      return res.status(404).send({
+        success: false,
+        message: "Event does not exist with provided Event ID",
+      });
+    }
+    const deletedEventData = await Event.findByIdAndDelete(eventId);
+
+    res.status(200).send({
+      success: true,
+      message: "Event is deleted with provided EventID",
+      deleteEvent: deletedEventData,
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+module.exports = {
+  createEvent,
+  getAllEvents,
+  getEventById,
+  updateEventById,
+  deleteEventById,
+};

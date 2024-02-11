@@ -9,14 +9,23 @@ const {
   deleteEventById,
   deleteAllEvents,
 } = require("../Controllers/eventController");
+/**
+ * @swagger
+ * tags:
+ *   name: Event
+ *   description: API endpoints for managing events
+ */
 
 //create an event
 router.post("/", createEvent);
 
 /**
  * @swagger
+ 
  * /events:
  *   get:
+ *     tags:
+ *       - Event
  *     summary: Retrieve all events
  *     description: Retrieve a list of all events stored in the database
  *     responses:
@@ -39,6 +48,8 @@ router.get("/", getAllEvents);
  * @swagger
  * /events/{eventId}:
  *   get:
+ *     tags:
+ *       - Event
  *     summary: Get an event by ID
  *     description: Retrieve information about a specific event using its ID.
  *     parameters:
@@ -66,6 +77,8 @@ router.get("/:eventId", getEventById);
  * @swagger
  * /events/{eventId}:
  *   put:
+ *     tags:
+ *       - Event
  *     summary: Update an event by ID
  *     description: Update information about a specific event using its ID.
  *     parameters:
@@ -138,6 +151,8 @@ router.put("/:eventId", updateEventById);
  * @swagger
  * /events/{eventId}:
  *   delete:
+ *     tags:
+ *       - Event
  *     summary: Delete an event by ID
  *     description: Delete a specific event using its ID.
  *     parameters:
@@ -166,6 +181,8 @@ router.delete("/:eventId", deleteEventById);
  * @swagger
  * /events:
  *   delete:
+ *     tags:
+ *       - Event
  *     summary: Delete all events
  *     description: Delete all events from the database.
  *     responses:

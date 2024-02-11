@@ -12,8 +12,84 @@ const {
 /**
  * @swagger
  * tags:
- *   name: Event
+ *   name: Events
  *   description: API endpoints for managing events
+ */
+/**
+ * @swagger
+ * /events:
+ *   post:
+ *     tags:
+ *       - Events
+ *     summary: Create a new event or events
+ *     description: Create a new event with the provided details.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: The name of the event.
+ *               description:
+ *                 type: string
+ *                 description: A brief description of the event.
+ *               location:
+ *                 type: object
+ *                 properties:
+ *                   venueName:
+ *                     type: string
+ *                     description: The name of the venue where the event will take place.
+ *                   address:
+ *                     type: string
+ *                     description: The street address of the venue.
+ *                   city:
+ *                     type: string
+ *                     description: The city where the event will take place.
+ *                   state:
+ *                     type: string
+ *                     description: The state or province where the event will take place.
+ *                   postalCode:
+ *                     type: string
+ *                     description: The postal code of the event location.
+ *                   country:
+ *                     type: string
+ *                     description: The country where the event will take place.
+ *               category:
+ *                 type: string
+ *                 enum: [music, sports, conference]
+ *                 description: The category of the event.
+ *               startDate:
+ *                 type: string
+ *                 format: date-time
+ *                 description: The start date and time of the event.
+ *               endDate:
+ *                 type: string
+ *                 format: date-time
+ *                 description: The end date and time of the event.
+ *               attendeesLimit:
+ *                 type: integer
+ *                 description: The maximum number of attendees allowed for the event.
+ *               price:
+ *                 type: string
+ *                 description: The price of the event. Specify as a number or "Free".
+ *               registrationDeadline:
+ *                 type: string
+ *                 format: date-time
+ *                 description: The deadline for event registration.
+ *               status:
+ *                 type: string
+ *                 enum: [active, inactive]
+ *                 description: The status of the event.
+ *     responses:
+ *       '201':
+ *         description: Event created successfully.
+ *       '400':
+ *         description: Invalid request, such as missing or invalid parameters.
+ *       '500':
+ *         description: Internal server error.
  */
 
 //create an event
@@ -25,7 +101,7 @@ router.post("/", createEvent);
  * /events:
  *   get:
  *     tags:
- *       - Event
+ *       - Events
  *     summary: Retrieve all events
  *     description: Retrieve a list of all events stored in the database
  *     responses:
@@ -49,7 +125,7 @@ router.get("/", getAllEvents);
  * /events/{eventId}:
  *   get:
  *     tags:
- *       - Event
+ *       - Events
  *     summary: Get an event by ID
  *     description: Retrieve information about a specific event using its ID.
  *     parameters:
@@ -78,7 +154,7 @@ router.get("/:eventId", getEventById);
  * /events/{eventId}:
  *   put:
  *     tags:
- *       - Event
+ *       - Events
  *     summary: Update an event by ID
  *     description: Update information about a specific event using its ID.
  *     parameters:
@@ -152,7 +228,7 @@ router.put("/:eventId", updateEventById);
  * /events/{eventId}:
  *   delete:
  *     tags:
- *       - Event
+ *       - Events
  *     summary: Delete an event by ID
  *     description: Delete a specific event using its ID.
  *     parameters:
@@ -182,7 +258,7 @@ router.delete("/:eventId", deleteEventById);
  * /events:
  *   delete:
  *     tags:
- *       - Event
+ *       - Events
  *     summary: Delete all events
  *     description: Delete all events from the database.
  *     responses:

@@ -22,7 +22,10 @@ const options = {
     info: {
       title: "Event Management API",
       version: "1.0.0",
+      description:
+        "The Event Management API is a comprehensive solution designed to facilitate the organization, coordination, and management of various events. It provides robust functionality for creating, updating, and deleting events, as well as retrieving event details. With intuitive endpoints and robust data handling, this API simplifies event management tasks, making it an essential tool for event planners, organizers, and administrators.",
     },
+
     servers: [
       {
         url: "http://localhost:8000", // Replace this with your server URL

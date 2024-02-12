@@ -1,10 +1,15 @@
 const User = require("../Models/userModels");
-
+const isValidEmail = require("../Utils/emailCheck");
 const registerController = async (req, res) => {
   try {
     const newUserData = req.body;
     console.log(newUserData);
-
+    if (!isValidEmail(newUserData.email)) {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid email",
+      });
+    }
     const existingUser = await User.findOne({ email: newUserData.email });
     console.log(existingUser);
     if (existingUser) {

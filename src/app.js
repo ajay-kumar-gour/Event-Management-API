@@ -12,8 +12,10 @@ const PORT = process.env.PORT;
 console.log(PORT);
 app.use(express.json());
 const eventRouter = require("./Routes/eventRoutes");
-
+const userRouter = require("./Routes/userRoutes");
 app.use("/events", eventRouter);
+
+app.use("/auth", userRouter);
 
 const options = {
   definition: {

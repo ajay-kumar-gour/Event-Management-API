@@ -1,6 +1,9 @@
 const User = require("../Models/userModels");
 const isValidEmail = require("../Utils/emailCheck");
 const bcrypt = require("bcrypt");
+const SECRET = process.env.SECRET;
+const jsonwebtoken = require("jsonwebtoken");
+
 const registerController = async (req, res) => {
   try {
     const newUserData = req.body;
@@ -43,7 +46,7 @@ const loginController = async (req, res) => {
   const userData = req.body;
 
   const checkExistingUser = await User.findOne({ email: userData.email });
-
+  // console.log(checkExistingUser);
   if (!checkExistingUser) {
     return res.status(404).send({
       success: false,
@@ -62,9 +65,19 @@ const loginController = async (req, res) => {
       .send({ success: false, message: "Invalid Password" });
   }
 
+  const payload = {
+    firstName: checkExistingUser.firstName,
+    lastName: checkExistingUser.lastName,
+    username: checkExistingUser.username,
+    email: checkExistingUser.email,
+  };
+  // console.log("payload", payload);
+
+  const accessToken = jsonwebtoken.sign(payload, SECRET, { expiresIn: "30m" });
   res.status(200).send({
     success: true,
     message: "Login successfully",
+    accessToken,
     checkExistingUser,
   });
 };

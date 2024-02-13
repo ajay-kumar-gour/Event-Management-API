@@ -1,5 +1,6 @@
 const User = require("../Models/userModels");
 const isValidEmail = require("../Utils/emailCheck");
+const bcrypt = require("bcrypt");
 const registerController = async (req, res) => {
   try {
     const newUserData = req.body;
@@ -38,4 +39,34 @@ const registerController = async (req, res) => {
   }
 };
 
-module.exports = { registerController };
+const loginController = async (req, res) => {
+  const userData = req.body;
+
+  const checkExistingUser = await User.findOne({ email: userData.email });
+
+  if (!checkExistingUser) {
+    return res.status(404).send({
+      success: false,
+      message: "User does not exist with provided email",
+    });
+  }
+
+  const isValidPassword = await bcrypt.compare(
+    userData.password,
+    checkExistingUser.password
+  );
+
+  if (!isValidPassword) {
+    return res
+      .status(400)
+      .send({ success: false, message: "Invalid Password" });
+  }
+
+  res.status(200).send({
+    success: true,
+    message: "Login successfully",
+    checkExistingUser,
+  });
+};
+
+module.exports = { registerController, loginController };

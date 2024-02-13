@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const authenticateToken = require("../Middlewares/authMiddleware");
+
 const {
   createEvent,
   getAllEvents,
@@ -249,7 +251,7 @@ router.put("/:eventId", updateEventById);
  *         description: Internal server error
  */
 
-router.delete("/:eventId", deleteEventById);
+router.delete("/:eventId", authenticateToken, deleteEventById);
 
 // delete All Events
 
@@ -270,6 +272,6 @@ router.delete("/:eventId", deleteEventById);
  *         description: Internal server error
  */
 
-router.delete("/", deleteAllEvents);
+router.delete("/", authenticateToken, deleteAllEvents);
 
 module.exports = router;

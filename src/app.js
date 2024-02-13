@@ -13,8 +13,10 @@ console.log(PORT);
 app.use(express.json());
 const eventRouter = require("./Routes/eventRoutes");
 const userRouter = require("./Routes/userRoutes");
-app.use("/events", eventRouter);
 
+const eventSearchRouter = require("./Routes/eventSearchRouter");
+app.use("/events", eventRouter);
+app.use("/events/search", eventSearchRouter);
 app.use("/auth", userRouter);
 
 const options = {

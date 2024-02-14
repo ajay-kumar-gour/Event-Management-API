@@ -189,7 +189,7 @@ const deleteAllEvents = async (req, res) => {
     const deletedData = await Event.deleteMany();
     console.log(deletedData);
 
-    res.status(204).send({
+    res.status(200).send({
       success: true,
       message: "All Events deleted successfully",
     });

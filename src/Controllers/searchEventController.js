@@ -1,6 +1,11 @@
 const Event = require("../Models/eventModels");
 
-const searchEventByNameController = (req, res) => {};
+const searchEventByNameController = async(req, res) => {
+
+  const eventName = req.params.name;
+
+
+};
 
 const searchEventByCityController = (req, res) => {};
 const searchEventByCategoryController = (req, res) => {};

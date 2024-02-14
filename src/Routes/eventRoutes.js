@@ -148,7 +148,7 @@ router.get("/", getAllEvents);
  *         description: Internal server error
  */
 
-router.get("/:eventId", getEventById);
+router.get("/eventID/:eventId", getEventById);
 // //update an existing event
 
 /**
@@ -222,7 +222,7 @@ router.get("/:eventId", getEventById);
  *         description: Internal server error
  */
 
-router.put("/:eventId", updateEventById);
+router.put("/eventID/:eventId", updateEventById);
 
 // //delete an event
 /**
@@ -251,7 +251,7 @@ router.put("/:eventId", updateEventById);
  *         description: Internal server error
  */
 
-router.delete("/:eventId", authenticateToken, deleteEventById);
+router.delete("/eventID/:eventId", authenticateToken, deleteEventById);
 
 // delete All Events
 

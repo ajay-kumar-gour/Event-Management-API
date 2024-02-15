@@ -3,13 +3,12 @@ const Event = require("../Models/eventModels");
 const searchEventByNameController = async (req, res) => {
   const eventName = req.params.name;
 
-  
   try {
-    const eventNameFilteredData = await Event.find({
+    const eventDataFilteredName = await Event.find({
       name: { $regex: new RegExp(eventName, "i") },
     });
-
-    if (!eventNameFilteredData) {
+    console.log("eventNameFilteredData", eventDataFilteredName);
+    if (eventDataFilteredName.length == 0) {
       return res.status(404).send({
         success: false,
         message: "No Event Found with provided event",
@@ -18,8 +17,8 @@ const searchEventByNameController = async (req, res) => {
     res.status(200).send({
       success: true,
       message: "Event Found",
-      totalEventFound: eventNameFilteredData.length,
-      event: eventNameFilteredData,
+      totalEventFound: eventDataFilteredName.length,
+      event: eventDataFilteredName,
     });
   } catch (error) {
     res.status(500).send({
@@ -30,7 +29,7 @@ const searchEventByNameController = async (req, res) => {
   }
 };
 
-const searchEventByCityController = (req, res) => {};
+
 const searchEventByCategoryController = (req, res) => {};
 const searchEventByDateRangeController = (req, res) => {};
 

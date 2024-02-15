@@ -59,7 +59,36 @@ const searchEventByCityController = async (req, res) => {
   }
 };
 
-const searchEventByCategoryController = (req, res) => {};
+const searchEventByCategoryController = async (req, res) => {
+  const eventCategory = req.params.category;
+  console.log("eventCategory", eventCategory);
+  try {
+    const eventDataFilteredCategory = await Event.find({
+      category: { $regex: new RegExp(eventCategory, "i") },
+    });
+
+    console.log("eventDataFilteredCategory", eventDataFilteredCategory);
+    if (eventDataFilteredCategory.length == 0) {
+      return res.status(404).send({
+        success: false,
+        message: "No Event found with the provided event category",
+      });
+    }
+
+    res.status(200).send({
+      success: true,
+      message: "Event found",
+      totalEvent: eventDataFilteredCategory.length,
+      event: eventDataFilteredCategory,
+    });
+  } catch (errror) {
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Errior",
+      error: error.message,
+    });
+  }
+};
 const searchEventByDateRangeController = (req, res) => {};
 
 module.exports = {

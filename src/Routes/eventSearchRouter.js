@@ -13,4 +13,6 @@ router.get("/city/:city", searchEventByCityController);
 router.get("/category/:category", searchEventByCategoryController);
 router.get("/dateRange/:dateRange", searchEventByDateRangeController);
 
+router.get("/priceType", searchEventByPriceTypeController);
+
 module.exports = router;

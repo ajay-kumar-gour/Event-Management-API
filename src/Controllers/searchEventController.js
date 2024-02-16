@@ -89,7 +89,10 @@ const searchEventByCategoryController = async (req, res) => {
     });
   }
 };
+
+
 const searchEventByDateRangeController = (req, res) => {};
+const searchEventByPriceTypeController = (req, res) => {};
 
 module.exports = {
   searchEventByNameController,

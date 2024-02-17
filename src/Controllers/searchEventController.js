@@ -90,13 +90,60 @@ const searchEventByCategoryController = async (req, res) => {
   }
 };
 
-
 const searchEventByDateRangeController = (req, res) => {};
-const searchEventByPriceTypeController = (req, res) => {};
+const searchEventByPriceTypeController = async (req, res) => {
+  const priceType = req.params.priceType;
+
+  try {
+    let eventDataFilteredByPrice;
+    if (priceType == "Free") {
+      eventDataFilteredByPrice = await Event.find({ price: "Free" });
+      if (eventDataFilteredByPrice.length == 0) {
+        return res.status(404).send({
+          success: false,
+          message: "No Free Event found",
+        });
+      }
+      return res.status(200).send({
+        success: true,
+        message: "Free Event(s) found",
+        totalFreeEvent: eventDataFilteredByPrice.length,
+        eventDataFilteredByPrice,
+      });
+    } else if (priceType == "Paid") {
+      eventDataFilteredByPrice = await Event.find({ price: { $ne: "Free" } });
+      if (eventDataFilteredByPrice.length == 0) {
+        return res.status(404).send({
+          success: false,
+          message: "No Paid Event found",
+        });
+      }
+      return res.status(200).send({
+        success: true,
+        message: "Paid Event(s) found",
+        totalPaidEvent: eventDataFilteredByPrice.length,
+        eventDataFilteredByPrice,
+      });
+    } else {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid PriceType, it can be either Paid or Free",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {
   searchEventByNameController,
   searchEventByCityController,
   searchEventByCategoryController,
   searchEventByDateRangeController,
+  searchEventByPriceTypeController,
 };

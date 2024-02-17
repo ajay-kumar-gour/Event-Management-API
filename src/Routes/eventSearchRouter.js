@@ -4,6 +4,7 @@ const {
   searchEventByCityController,
   searchEventByCategoryController,
   searchEventByDateRangeController,
+  searchEventByPriceTypeController
 } = require("../Controllers/searchEventController");
 
 const router = express.Router();
@@ -13,6 +14,6 @@ router.get("/city/:city", searchEventByCityController);
 router.get("/category/:category", searchEventByCategoryController);
 router.get("/dateRange/:dateRange", searchEventByDateRangeController);
 
-router.get("/priceType", searchEventByPriceTypeController);
+router.get("/price/:priceType", searchEventByPriceTypeController);
 
 module.exports = router;

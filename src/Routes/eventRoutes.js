@@ -278,7 +278,7 @@ router.delete("/", authenticateToken, deleteAllEvents);
 
 // EVENT REGISTRATION BY A USER
 
-router.post("/:eventID/register", eventRegisterController);
+router.post("/:eventID/register", authenticateToken,eventRegisterController);
 
 
 

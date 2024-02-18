@@ -11,6 +11,7 @@ const {
   deleteEventById,
   deleteAllEvents,
 } = require("../Controllers/eventController");
+const eventRegisterController = require("../Controllers/eventRegisterController");
 /**
  * @swagger
  * tags:
@@ -273,5 +274,12 @@ router.delete("/eventID/:eventId", authenticateToken, deleteEventById);
  */
 
 router.delete("/", authenticateToken, deleteAllEvents);
+
+
+// EVENT REGISTRATION BY A USER
+
+router.post("/:eventID/register", eventRegisterController);
+
+
 
 module.exports = router;

@@ -1,5 +1,7 @@
 const Event = require("../Models/eventModels");
 
+const isValidDateFormat = require("../Utils/dateFormatCheck");
+
 const searchEventByNameController = async (req, res) => {
   const eventName = req.params.name;
 
@@ -90,7 +92,6 @@ const searchEventByCategoryController = async (req, res) => {
   }
 };
 
-const searchEventByDateRangeController = (req, res) => {};
 const searchEventByPriceTypeController = async (req, res) => {
   const priceType = req.params.priceType;
 

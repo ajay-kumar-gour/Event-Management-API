@@ -164,10 +164,10 @@ const searchEventByDateRangeController = async (req, res) => {
         endDate: { $lte: new Date(endDate) },
       });
 
-      if (!eventDataFilteredByDateRange) {
+      if (eventDataFilteredByDateRange.length==0) {
         return res.status(404).send({
           success: false,
-          message: "No Event forund in the given date range",
+          message: "No Event found in the given date range",
         });
       }
 

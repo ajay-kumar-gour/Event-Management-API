@@ -141,6 +141,52 @@ const searchEventByPriceTypeController = async (req, res) => {
   }
 };
 
+const searchEventByDateRangeController = async (req, res) => {
+  const { startDate, endDate } = req.query;
+  console.log("startDate & endDate is", startDate, "&", endDate);
+
+  console.log("  isValidDateFormat(startDate)", isValidDateFormat(startDate));
+  console.log("  isValidDateFormat(startDate)", isValidDateFormat(endDate));
+  try {
+    if (!startDate || !endDate) {
+      return res.status(400).send({
+        success: false,
+        message: "startDate and endData value is is missing in query",
+      });
+    } else if (!isValidDateFormat(startDate) || !isValidDateFormat(endDate)) {
+      return res.status(400).send({
+        success: false,
+        message: "Start date and/or end date must be in YYYY-MM-DD format.",
+      });
+    } else {
+      const eventDataFilteredByDateRange = await Event.find({
+        startDate: { $gte: new Date(startDate) },
+        endDate: { $lte: new Date(endDate) },
+      });
+
+      if (!eventDataFilteredByDateRange) {
+        return res.status(404).send({
+          success: false,
+          message: "No Event forund in the given date range",
+        });
+      }
+
+      res.status(200).send({
+        success: true,
+        message: "Event(s) found in the given data range",
+        totalEventFound: eventDataFilteredByDateRange.length,
+        eventDataFilteredByDateRange,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   searchEventByNameController,
   searchEventByCityController,

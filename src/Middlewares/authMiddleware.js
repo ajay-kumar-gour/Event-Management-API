@@ -27,6 +27,7 @@ const authenticateToken = (req, res, next) => {
       });
     } else {
       console.log("Decoded Payload :", decoded);
+      req.decodedData = decoded;
     }
 
     next();

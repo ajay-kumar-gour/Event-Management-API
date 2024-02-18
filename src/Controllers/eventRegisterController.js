@@ -31,6 +31,10 @@ const eventRegisterController = async (req, res) => {
       });
     }
 
+    eventToRegister.attendees.push({
+      attendeeName: userName,
+      attendeeEmail: userEmail,
+    });
     const eventRegistered = await eventToRegister.save();
 
     res.status(200).send({

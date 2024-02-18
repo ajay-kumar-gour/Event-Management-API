@@ -63,6 +63,8 @@ const eventSchema = new mongoose.Schema(
       type: Number,
       min: 0,
     },
+
+    attendees: [{ attendeeName: String, attendeeEmail: String }],
     price: {
       type: mongoose.Schema.Types.Mixed,
       required: true,

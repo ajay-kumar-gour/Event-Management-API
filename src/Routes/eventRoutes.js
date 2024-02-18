@@ -12,6 +12,7 @@ const {
   deleteAllEvents,
 } = require("../Controllers/eventController");
 const eventRegisterController = require("../Controllers/eventRegisterController");
+const showEventAttendeesController = require("../Controllers/showEventAttendeesController");
 /**
  * @swagger
  * tags:
@@ -275,11 +276,12 @@ router.delete("/eventID/:eventId", authenticateToken, deleteEventById);
 
 router.delete("/", authenticateToken, deleteAllEvents);
 
-
 // EVENT REGISTRATION BY A USER
 
-router.post("/:eventID/register", authenticateToken,eventRegisterController);
+router.post("/:eventID/register", authenticateToken, eventRegisterController);
 
+//SEE ALL ATTENDEES FOR AN EVENT
 
+router.get("/:eventID/attendees", showEventAttendeesController);
 
 module.exports = router;

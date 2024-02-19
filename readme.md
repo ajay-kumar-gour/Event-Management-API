@@ -9,3 +9,18 @@ The Event Management API provides a comprehensive set of endpoints to manage var
 ## Overview
 
 This API enables event organizers to efficiently manage their events and allows users to seamlessly register for and attend events of interest. With intuitive endpoints and robust functionality, the Event Management API simplifies the process of event organization and attendance.
+
+## Features
+
+| Feature               | Description                                                                                      |
+|-----------------------|--------------------------------------------------------------------------------------------------|
+| Create Events         | Add new events with details such as name, description, location, category, start date, end date, etc. |
+| Retrieve Events       | Get a list of all events or retrieve a specific event by its ID.                                 |
+| Update Events         | Update existing events with new information.                                                     |
+| Delete Events         | Delete events either individually by ID or delete all events at once.                             |
+| User Registration     | Users can register by providing their details such as first name, last name, email, and password. |
+| User Login            | Registered users can log in using their email and password to access protected endpoints.        |
+| Authentication with JWT | JWT tokens are used for user authentication and authorization.                                  |
+|Hashing Passwords      | User passwords are securely hashed using bcrypt before storing them in the database, ensuring enhanced security.|
+| Search Events         | Search for events by name, location (city), event category, and date range.                       |
+| Event Registration    | Allow users to register for events, managing their attendance and providing event organizers with attendee lists. |

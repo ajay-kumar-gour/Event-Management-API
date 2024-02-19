@@ -24,3 +24,36 @@ This API enables event organizers to efficiently manage their events and allows 
 |Hashing Passwords      | User passwords are securely hashed using bcrypt before storing them in the database, ensuring enhanced security.|
 | Search Events         | Search for events by name, location (city), event category, and date range.                       |
 | Event Registration    | Allow users to register for events, managing their attendance and providing event organizers with attendee lists. |
+
+
+## Endpoints
+
+### Home
+> - `GET /`: Welcome page.
+
+### Events
+
+> - `GET /events`: Retrieve a list of all events.
+> - `GET /events/:eventId`: Retrieve a specific event by its ID.
+> - `POST /events`: Create a new event.
+> - `PUT /events/:eventId`: Update an existing event.
+> - `DELETE /events/:eventId`: Delete an event by its ID.
+> - `DELETE /events`: Delete all events.
+
+### Authentication
+
+> - `POST auth/register`: Register a new user.
+> - `POST auth/login`: Log in a registered user and generate JWT tokens.
+
+### Search
+
+> - `GET /events/search/name/:name`: Search for events by name.
+> - `GET /events/search/city/:city`: Search for events by location(city).
+> - `GET /events/search/category/:category`: Search for events by category.
+> - `GET /events/search/price/:PriceType`: Search for events by PriceType(Paid or Free).
+> - `GET /events/search/dateRange/:startDate/:endDate`: Search for events within a specified date range.
+
+### Event Registration
+
+> - `POST /events/:eventId/register`: Register a user for a specific event.
+> - `GET /events/:eventId/attendees`: Retrieve a list of attendees for a specific event.

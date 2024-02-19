@@ -29,31 +29,31 @@ This API enables event organizers to efficiently manage their events and allows 
 ## Endpoints
 
 ### Home
-> - `GET /`: Welcome page.
+- `GET /`: Welcome page.
 
 ### Events
 
-> - `GET /events`: Retrieve a list of all events.
-> - `GET /events/:eventId`: Retrieve a specific event by its ID.
-> - `POST /events`: Create a new event.
-> - `PUT /events/:eventId`: Update an existing event.
-> - `DELETE /events/:eventId`: Delete an event by its ID.
-> - `DELETE /events`: Delete all events.
+- `GET /events`: Retrieve a list of all events.
+- `GET /events/:eventId`: Retrieve a specific event by its ID.
+- `POST /events`: Create a new event.
+- `PUT /events/:eventId`: Update an existing event.
+- `DELETE /events/:eventId`: Delete an event by its ID.
+- `DELETE /events`: Delete all events.
 
 ### Authentication
 
-> - `POST auth/register`: Register a new user.
-> - `POST auth/login`: Log in a registered user and generate JWT tokens.
+- `POST auth/register`: Register a new user.
+- `POST auth/login`: Log in a registered user and generate JWT tokens.
 
 ### Search
 
-> - `GET /events/search/name/:name`: Search for events by name.
-> - `GET /events/search/city/:city`: Search for events by location(city).
-> - `GET /events/search/category/:category`: Search for events by category.
-> - `GET /events/search/price/:PriceType`: Search for events by PriceType(Paid or Free).
-> - `GET /events/search/dateRange/:startDate/:endDate`: Search for events within a specified date range.
+- `GET /events/search/name/:name`: Search for events by name.
+- `GET /events/search/city/:city`: Search for events by location(city).
+- `GET /events/search/category/:category`: Search for events by category.
+- `GET /events/search/price/:PriceType`: Search for events by PriceType(Paid or Free).
+- `GET /events/search/dateRange/:startDate/:endDate`: Search for events within a specified date range.
 
 ### Event Registration
 
-> - `POST /events/:eventId/register`: Register a user for a specific event.
-> - `GET /events/:eventId/attendees`: Retrieve a list of attendees for a specific event.
+- `POST /events/:eventId/register`: Register a user for a specific event.
+- `GET /events/:eventId/attendees`: Retrieve a list of attendees for a specific event.

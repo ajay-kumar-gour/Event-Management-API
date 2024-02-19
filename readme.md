@@ -58,3 +58,9 @@ This API enables event organizers to efficiently manage their events and allows 
 
 - `POST /events/:eventId/register`: Register a user for a specific event.
 - `GET /events/:eventId/attendees`: Retrieve a list of attendees for a specific event.
+
+## Model
+
+### Event Model
+
+![eventModelAdvanceCR](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/fe4076ec-7c03-4da2-a188-4143233130c0)

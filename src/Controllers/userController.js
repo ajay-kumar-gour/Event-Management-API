@@ -71,7 +71,7 @@ const loginController = async (req, res) => {
     username: checkExistingUser.username,
     email: checkExistingUser.email,
   };
-  // console.log("payload", payload);
+  console.log("payload", payload);
 
   const accessToken = jsonwebtoken.sign(payload, SECRET, { expiresIn: "30m" });
   res.status(200).send({

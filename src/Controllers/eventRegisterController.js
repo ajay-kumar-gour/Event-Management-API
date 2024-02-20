@@ -14,7 +14,6 @@ const eventRegisterController = async (req, res) => {
   // console.log(userData);
   // console.log(eventID);
   // res.status(200).send({ userEmail, eventID });
-
   try {
     if (!mongoose.Types.ObjectId.isValid(eventID)) {
       return res.status(400).send({
@@ -61,6 +60,7 @@ const eventRegisterController = async (req, res) => {
       error: error.message,
     });
   }
+
 };
 
 module.exports = eventRegisterController;

@@ -164,3 +164,23 @@ This API enables event organizers to efficiently manage their events and allows 
 - Add the user's registration details to the event object.
 - Save the updated event object to the database.
 - Return a success response confirming the user's registration for the event.
+
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ajay-kumar-gour/Event-Management-API
+2. **Navigate to the project directory:**
+    ```bash
+   cd Event Management API
+3. **Install dependencies:**
+    ```bash
+   npm install
+4. **Set up environment variables:**
+    ```bash
+   Create a .env file in the root directory.
+   Define required environment variables such as PORT, MONGODB_URI, and SECRET.
+5. **Start the server:**
+    ```bash
+   npm start

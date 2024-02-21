@@ -123,3 +123,44 @@ This API enables event organizers to efficiently manage their events and allows 
 }
 
 ``` 
+
+## Algorithm for User Journey in Event Management API
+
+### User Registration Endpoint (POST /register):
+- Receive a POST request containing user registration details (first name, last name, email, password).
+- Validate the request body.
+- Check if the user already exists in the database based on the provided email.
+- If the user doesn't exist, hash the password using bcrypt and save the user details to the database.
+- Return a success response indicating successful user registration.
+
+### User Login Endpoint (POST /login):
+- Receive a POST request containing user login credentials (email, password).
+- Validate the request body.
+- Find the user in the database based on the provided email.
+- If the user exists, compare the hashed password with the provided password using bcrypt.
+- If the passwords match, generate a JWT access token containing user information.
+- Return the access token in the response for authenticated access to protected endpoints.
+
+### Event Retrieval Endpoint (GET /events):
+- Receive a GET request.
+- Retrieve all events from the database.
+- Return a success response with the list of events.
+
+### Event Creation Endpoint (GET /events):
+- Receive a POST request.
+- Create a events in the database.
+- Return a success response with the list of events created.
+
+### Event Search Endpoint (GET /events/search):
+- Receive a GET request with query parameters for search criteria (event name, location, category, date range).
+- Validate the query parameters.
+- Query the database based on the provided search criteria.
+- Return a success response with the filtered list of events.
+
+### Event Registration Endpoint (POST /events/:eventId/register):
+- Receive a POST request containing the event ID and any additional registration details.
+- Validate the request body.
+- Find the event in the database by ID.
+- Add the user's registration details to the event object.
+- Save the updated event object to the database.
+- Return a success response confirming the user's registration for the event.

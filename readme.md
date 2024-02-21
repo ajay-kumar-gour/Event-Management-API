@@ -188,3 +188,17 @@ This API enables event organizers to efficiently manage their events and allows 
 5. **Start the server:**
     ```bash
    npm start
+## Usage
+
+1. **Ensure MongoDB is running.**
+
+2. **Interact with Endpoints:**
+   - Use API testing tools like Postman to interact with the available endpoints.
+  
+## Contributions
+
+Contributions are welcome! If you have suggestions, found issues, or want to add new features, feel free to open issues or submit pull requests. Let's make this project better together!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

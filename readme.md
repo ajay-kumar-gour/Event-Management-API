@@ -181,6 +181,10 @@ This API enables event organizers to efficiently manage their events and allows 
     ```bash
    Create a .env file in the root directory.
    Define required environment variables such as PORT, MONGODB_URI, and SECRET.
+    example :
+      PORT=8000
+      MONGO_URI=mongodb://localhost:27017/e_commerce_db
+      SECRET=your_secret_key
 5. **Start the server:**
     ```bash
    npm start

@@ -51,6 +51,8 @@ app.get("/", (req, res) => {
   res.status(200).json({
     sucess: "True",
     message: "Welcome to Event Management API",
+    Github: "https://github.com/ajay-kumar-gour/Event-Management-API",
+    Developer: "Ajay Kumar Gour",
   });
 });
 

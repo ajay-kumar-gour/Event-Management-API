@@ -188,6 +188,12 @@ This API enables event organizers to efficiently manage their events and allows 
 5. **Start the server:**
     ```bash
    npm start
+
+## Screenshots
+![eventPM](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/d9f6d9f8-8ac4-4d31-a670-160e086b88f2)
+
+![eventVS](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/b5c6b54e-aae6-4797-9da3-89bfd4594b28)
+
 ## Usage
 
 1. **Ensure MongoDB is running.**

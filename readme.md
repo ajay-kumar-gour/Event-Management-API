@@ -68,3 +68,36 @@ This API enables event organizers to efficiently manage their events and allows 
 ### User Model
 
 ![userModel](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/05970a2f-57b9-462f-951b-25195e514bc9)
+
+### Sample Event Object
+
+```json
+{
+  "location": {
+    "venueName": "Art Studio",
+    "address": "456 Art Avenue",
+    "city": "Mumbai",
+    "postalCode": "400001",
+    "country": "India"
+  },
+  "_id": "65cc57e0ad11c7d0c44ba3ff",
+  "name": "Art Workshop",
+  "description": "Express your creativity in this interactive art workshop.",
+  "category": "workshop",
+  "startDate": "2024-04-20T00:00:00.000Z",
+  "endDate": "2024-04-20T00:00:00.000Z",
+  "attendeesLimit": 30,
+  "price": 500,
+  "registrationDeadline": "2024-04-15T00:00:00.000Z",
+  "status": "upcoming",
+  "__v": 1,
+  "createdAt": "2024-02-14T06:04:16.770Z",
+  "updatedAt": "2024-02-18T13:17:09.187Z",
+  "attendees": [
+    {
+      "attendeeName": "ashish gour",
+      "attendeeEmail": "ashish@gmail.com",
+      "_id": "65d203558e0be5f880e14f74"
+    }
+  ]
+}

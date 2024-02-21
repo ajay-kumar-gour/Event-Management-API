@@ -99,9 +99,27 @@ This API enables event organizers to efficiently manage their events and allows 
     }
   ]
 }
+``` 
 
 ### User Model
 
 ![userModel](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/05970a2f-57b9-462f-951b-25195e514bc9)
 
 
+### Sample User Object
+
+```json
+{
+        "firstName": "santa",
+        "lastName": "viyshehell",
+        "username": "shviyshehellantan",
+        "email": "santa@gmail.com",
+        "password": "$2b$10$12ckaATYGCfxPq4h5vastOuxSisDndcwUqxVlfByA6Kq9AdjcJIKa",
+        "_id": "65d5a1ada94662a6a7534dbb",
+        "createdAt": "2024-02-21T07:09:33.377Z",
+        "updatedAt": "2024-02-21T07:09:33.377Z",
+        "__v": 0
+    
+}
+
+``` 

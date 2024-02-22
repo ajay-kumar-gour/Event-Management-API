@@ -32,6 +32,10 @@ This API enables event organizers to efficiently manage their events and allows 
 ### Home
 - `GET /`: Welcome page.
 
+### SWAGGER
+- `GET /api-docs`: Swagger documentation for Event
+
+
 ### Events
 
 - `GET /events`: Retrieve a list of all events.

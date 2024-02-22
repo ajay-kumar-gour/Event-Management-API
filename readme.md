@@ -32,6 +32,10 @@ This API enables event organizers to efficiently manage their events and allows 
 ### Home
 - `GET /`: Welcome page.
 
+### SWAGGER
+- `GET /api-docs`: Swagger documentation for Event
+
+
 ### Events
 
 - `GET /events`: Retrieve a list of all events.
@@ -190,8 +194,16 @@ This API enables event organizers to efficiently manage their events and allows 
    npm start
 
 ## Screenshots
+POSTMAN
 ![eventPM](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/d9f6d9f8-8ac4-4d31-a670-160e086b88f2)
 
+
+SWAGGER DOCUMENTATION FOR EVENT
+![swagger](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/a1780b6d-e3e9-418c-9a38-7d6d288952d8)
+
+
+
+VS CODE
 ![eventVS](https://github.com/ajay-kumar-gour/Event-Management-API/assets/153515139/b5c6b54e-aae6-4797-9da3-89bfd4594b28)
 
 ## Usage

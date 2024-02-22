@@ -35,6 +35,7 @@ const showEventAttendeesController = async (req, res) => {
     res.status(200).send({
       success: true,
       messsage: "Attendees found that has regitered this event",
+      totalAttendees: eventAttendees.length,
       eventAttendees,
     });
   } catch (error) {

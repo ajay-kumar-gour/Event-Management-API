@@ -11,6 +11,13 @@ The Event Management API provides a comprehensive set of endpoints to manage var
 
 This API enables event organizers to efficiently manage their events and allows users to seamlessly register for and attend events of interest. With intuitive endpoints and robust functionality, the Event Management API simplifies the process of event organization and attendance.
 
+## Live Server
+
+Check out the live application of the Event Management API:
+
+[Live production server](https://eventifyhub.onrender.com)
+
+
 ## Features
 
 | Feature               | Description                                                                                      |

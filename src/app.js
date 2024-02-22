@@ -36,7 +36,7 @@ const options = {
         description: "Local development server",
       },
       {
-        url: "https://eventmanagemntapi.com",
+        url: "https://eventifyhub.onrender.com",
         description: "Production server",
       },
     ],
